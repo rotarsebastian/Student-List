@@ -1,0 +1,152 @@
+
+body{
+    margin: 0;
+}
+
+main{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#title{
+    text-align: center;
+    padding: 10px;
+}
+
+.student-details{
+    cursor: pointer;
+    text-align: center;
+    grid-column: 6/7;
+    color: rebeccapurple
+}
+
+.student{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 0.4em;
+    border: 1px solid black;
+    margin: 10px;
+    background-color: rgb(231, 229, 229);
+}
+
+#list{
+    grid-column: 1/2;
+    
+}
+
+#checkbox{
+    margin-left: -10px;
+    margin-top: 8px;
+}
+
+.student-last-name{
+    text-align: center;
+    grid-column: 4/6;
+
+}
+
+.student-first-name{
+    text-align: center;
+    grid-column: 2/4;
+}
+
+.delete-button{
+    color:red;
+    float: right;
+    margin-right: 15px;
+}
+
+#list{
+    text-align: left;
+    grid-column: 1/2;
+}
+
+.sort{
+    border: 1 px solid black;
+    font-size: 15px;
+    width: 150px;
+    text-align: left;
+    background-color: rgb(226, 226, 226);
+    margin-left: 10px;
+}
+.sort:after {
+    content: "▼";
+    color: #666;
+    float: right;
+}
+
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    background-color: #f1f1f1;
+    overflow: auto;
+    z-index: 1;
+    margin-left: 10px;
+    position: absolute;
+    min-width: 150px;;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 8px 5px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+#list{
+    list-style: none;
+}
+
+
+.hidden {
+    visibility: hidden;
+  }
+  
+  .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  #modal_window {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 80vw;
+  }
+  
+  /* The Close Button */
+  #closebutton {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  #closebutton:hover,
+  #closebutton:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
