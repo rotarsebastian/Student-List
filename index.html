@@ -21,6 +21,7 @@
             </div>
         </div>
         <button class="delete-button" type="button">Delete</button>
+        <button class="delete-button" id="select" type="button">Select All</button>
         <div id="students-container">
 
 
@@ -28,12 +29,12 @@
     </main>
 
     <template id="students-template">
-        <div class="student" id="student" onclick="selectStudents()">
+        <div class="student" id="student">
             <ul id="list">
                 <li><input id="checkbox" type="checkbox" name='student-check'></li>
             </ul>
-            <h3 class="student-first-name">First Name</h3>
-            <h3 class="student-last-name">Last Name</h3>
+            <h3 class="student-first-name" onclick="theFunction(event)">First Name</h3>
+            <h3 class="student-last-name" onclick="theFunction(event)">Last Name</h3>
             <p class="student-details" onclick="showModal()">see details</p>
 
         </div>

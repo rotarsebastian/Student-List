@@ -94,6 +94,8 @@ document.querySelector(".delete-button").onclick = function deleteIt() {
     var selectedStudents = [];
 
 
+
+
     for (i = 0; i < students.length; i++) // loop through it
     {
 
@@ -168,9 +170,15 @@ document.onkeydown = function (evt) {
     }
 };
 
+function theFunction(e) {
+    var checkbox = e.currentTarget.parentNode.querySelector("#checkbox");
+    checkbox.checked = !checkbox.checked;
+}
 
-
-
-function selectStudents() {
-
+document.getElementById("select").onclick = function () {
+    var students = document.getElementsByClassName("student");
+    for (var i = 0; i < students.length; i++) {
+        var check = students[i].querySelector("#checkbox");
+        check.checked = !check.checked;
+    }
 }
