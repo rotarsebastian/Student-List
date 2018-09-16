@@ -10,6 +10,7 @@ function init() {
     document.querySelector(".sort").addEventListener("click", doDropDown);
     document.getElementById("select").addEventListener("click", selectAll);
     document.addEventListener("keydown", escapeModal);
+    document.getElementById("closebutton").addEventListener("click", hideModal);
     document.addEventListener("click", closeDropDownOnClick);
 }
 
