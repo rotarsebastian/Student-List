@@ -1,11 +1,8 @@
 "use-strict";
 
-const endpoint = "data.json";
 
-const studentContainer = document.querySelector("#students-container");
-const studentTemplate = document.querySelector("#students-template").content;
-var studentArray = [];
-var sortedArray = [];
+
+
 
 init();
 
@@ -16,10 +13,12 @@ function init() {
     document.querySelector(".delete-button").addEventListener("click", deleteIt);
     document.querySelector(".sort").addEventListener("click", doDropDown);
     document.getElementById("select").addEventListener("click", selectAll);
-    document.onkeydown = escapeModal();
+    document.addEventListener("keydown", escapeModal);
+    document.addEventListener("click", closeDropDownOnClick);
 }
 
 function fetchStudents() {
+    const endpoint = "data.json";
     fetch(endpoint)
         .then(e => e.json())
         .then(students => showStudents(students));
@@ -29,7 +28,10 @@ function showStudents(students) {
 
 }
 function showSingleStudent(student) {
+    const studentContainer = document.querySelector("#students-container");
+    const studentTemplate = document.querySelector("#students-template").content;
     let clone = studentTemplate.cloneNode(true);
+    var studentArray = [];
     const name = student;
     var i = name.length - 1;
     while (name[i - 1] != " ") {
@@ -137,10 +139,12 @@ function doDropDown() {
 
 
 function showModal() {
+    let modal = document.querySelector(".modal");
     modal.style.display = "block";
 }
 
 function hideModal() {
+    let modal = document.querySelector(".modal");
     modal.style.display = "none";
 }
 
@@ -163,6 +167,20 @@ function selectAll() {
     var students = document.getElementsByClassName("student");
     for (var i = 0; i < students.length; i++) {
         var checkbox = students[i].querySelector("#checkbox");
-        checkbox.checked = !check.checked;
+        checkbox.checked = !checkbox.checked;
+    }
+}
+
+function closeDropDownOnClick(event) {
+    if (!event.target.matches('.sort')) {
+
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
     }
 }
