@@ -7,6 +7,17 @@ const studentTemplate = document.querySelector("#students-template").content;
 var studentArray = [];
 var sortedArray = [];
 
+init();
+
+function init() {
+    fetchStudents();
+    document.querySelector("#first-name").addEventListener("click", sortStudentsFirstName);
+    document.querySelector("#last-name").addEventListener("click", sortStudentsLastName);
+    document.querySelector(".delete-button").addEventListener("click", deleteIt);
+    document.querySelector(".sort").addEventListener("click", doDropDown);
+    document.getElementById("select").addEventListener("click", selectAll);
+    document.onkeydown = escapeModal();
+}
 
 function fetchStudents() {
     fetch(endpoint)
@@ -33,7 +44,7 @@ function showSingleStudent(student) {
 }
 
 
-document.querySelector("#first-name").onclick = function sortStudents() {
+function sortStudentsFirstName() {
     var firstName = document.getElementsByClassName("student-first-name");
     var lastName = document.getElementsByClassName("student-last-name");
     var details = document.getElementsByClassName("student-details");
@@ -61,7 +72,7 @@ document.querySelector("#first-name").onclick = function sortStudents() {
     }
 }
 
-document.querySelector("#last-name").onclick = function sortStudents() {
+function sortStudentsLastName() {
     var firstName = document.getElementsByClassName("student-first-name");
     var lastName = document.getElementsByClassName("student-last-name");
     var details = document.getElementsByClassName("student-details");
@@ -87,7 +98,7 @@ document.querySelector("#last-name").onclick = function sortStudents() {
     }
 }
 
-document.querySelector(".delete-button").onclick = function deleteIt() {
+function deleteIt() {
 
     var students = document.getElementsByClassName("student");
     var studentCheck = document.getElementsByName('student-check'); // get the checkbox
@@ -120,36 +131,9 @@ document.querySelector(".delete-button").onclick = function deleteIt() {
 
 }
 
-
-
-fetchStudents();
-
-
-
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
 function doDropDown() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function (event) {
-    if (!event.target.matches('.sort')) {
-
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
-    }
-}
-
-
-let modal = document.querySelector(".modal");
-
 
 
 function showModal() {
@@ -162,7 +146,7 @@ function hideModal() {
 
 
 
-document.onkeydown = function (evt) {
+function escapeModal(evt) {
     evt = evt || window.event;
     let modal = document.querySelector(".modal");
     if (evt.keyCode == 27) {
@@ -170,15 +154,15 @@ document.onkeydown = function (evt) {
     }
 };
 
-function theFunction(e) {
+function selectFromName(e) {
     var checkbox = e.currentTarget.parentNode.querySelector("#checkbox");
     checkbox.checked = !checkbox.checked;
 }
 
-document.getElementById("select").onclick = function () {
+function selectAll() {
     var students = document.getElementsByClassName("student");
     for (var i = 0; i < students.length; i++) {
-        var check = students[i].querySelector("#checkbox");
-        check.checked = !check.checked;
+        var checkbox = students[i].querySelector("#checkbox");
+        checkbox.checked = !check.checked;
     }
 }
